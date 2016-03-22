@@ -1,3 +1,15 @@
+\defbeamertemplate*{headline}{wvu head}
+{
+    \begin{tikzpicture}
+        \node[inner sep=0pt,anchor = north west] (header) at (0,\the\paperheight) 
+            {\includegraphics[width=\the\paperwidth,trim=0.01in 9.05in 3.15in 0.45in, clip]{WVU-Pattern-Thin-295-Coated}};
+        \node[inner sep=2pt,anchor = north west] (wvlogo) at ($(0.025*\the\paperwidth,0.97*\the\paperheight)$)
+            {\includegraphics[width=0.3\paperwidth]{Engineering-FL-124andWhite}};
+            \node[inner sep=0pt,anchor = west] (website) at ($(0.765*\the\paperwidth,0.888*\the\paperheight)$)
+            {\hypersetup{colorlinks=false} \usebeamercolor[fg]{statler web}\usebeamerfont{statler web} \href{http://www.statler.wvu.edu}{www.statler.wvu.edu}};
+    \end{tikzpicture}
+}
+
 \defbeamertemplate*{footline}{skip title}
 {
     \ifnum \insertframenumber=0
