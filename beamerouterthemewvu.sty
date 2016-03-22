@@ -1,0 +1,38 @@
+\defbeamertemplate*{footline}{skip title}
+{
+    \ifnum \insertframenumber=0
+        \leavevmode%
+        \hbox{%
+            \begin{beamercolorbox}[wd=\paperwidth,dp=3ex,right]{}
+            \end{beamercolorbox}%
+        }%
+        \vskip0pt%
+    \else
+        \leavevmode%
+        \hbox{%
+            \begin{beamercolorbox}[wd=\paperwidth,dp=3ex,right]{frame number}
+                \usebeamercolor[fg]{footline}\usebeamerfont{footline}\insertframenumber \hspace{2em}
+            \end{beamercolorbox}%
+        }%
+        \vskip0pt%
+    \fi
+}
+
+
+\defbeamertemplate*{navigation symbols}{wvu number}
+{%
+    \ifnum \insertframenumber=0
+    \else
+        \hbox{%
+            \hbox{\insertslidenavigationsymbol}
+            \hbox{\insertframenavigationsymbol}
+            \hbox{\insertsubsectionnavigationsymbol}
+            \hbox{\insertsectionnavigationsymbol}
+            \hbox{\insertdocnavigationsymbol}
+            \hbox{\insertbackfindforwardnavigationsymbol}%
+            \hspace{1em}\raisebox{0.3em}{\usebeamerfont{footline}\insertframenumber}
+        }%
+
+    \fi
+}
+

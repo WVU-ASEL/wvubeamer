@@ -1,0 +1,51 @@
+\mode<presentation>
+
+%\newlength{\myheight}
+
+\setbeamertemplate{background}{
+    \begin{tikzpicture}
+        \useasboundingbox (0,0) rectangle (\the\paperwidth, \the\paperheight);
+        \node[inner sep=0pt,anchor = north west] (header) at (0,\the\paperheight) 
+            {\includegraphics[width=\the\paperwidth,trim=0.01in 9.05in 3.15in 0.45in, clip]{WVU-Pattern-Thin-295-Coated}};
+        \node[inner sep=2pt,anchor = north west] (wvlogo) at ($(0.025*\the\paperwidth,0.97*\the\paperheight)$)
+            {\includegraphics[width=0.3\paperwidth]{Engineering-FL-124andWhite}};
+            \node[inner sep=0pt,anchor = west] (website) at ($(0.765*\the\paperwidth,0.888*\the\paperheight)$)
+            {\hypersetup{colorlinks=false} \fontseries{m} \fontfamily{phv} \tiny \selectfont \color{white} \href{http://www.statler.wvu.edu}{www.statler.wvu.edu}};
+        %\global\settoheight\myheight{\includegraphics[width=\the\paperwidth,trim=0.01in 9.05in 3.15in 0.45in, clip]{WVU-Pattern-Thin-295-Coated}}
+        %\global\advance\textheight by\myheight
+    \end{tikzpicture}
+%adjust the text height to reflect the top
+}
+
+
+
+
+%titlepage
+\defbeamertemplate*{title page}{wvu}[1][]
+{
+    \vspace*{\stretch{3}}
+    \begin{beamercolorbox}[wd=\textwidth,#1]{title page header}
+        \usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}
+    \vspace*{\stretch{2}}
+    \begin{beamercolorbox}[wd=\textwidth,#1]{conference}
+        \footnotesize \bfseries\itshape\insertdate\par%
+        The Noodle Meetings \par%
+        Philly, PA\par%
+    \end{beamercolorbox}
+    \bigskip
+    \begin{beamercolorbox}{contact info}
+        \footnotesize {\bfseries\insertauthor} \par%
+        Applied Space Exploration Laboratory \par%
+        Department of Mechanical and Aerospace Engineering \par%
+        Benjamin M. Statler College of Engineering \& Mineral Resources \par%
+        West Virginia University (WVU) \par%
+        {\hypersetup{colorlinks=false} \href{http://asel.mae.wvu.edu}{asel.mae.wvu.edu}} \par%
+    \end{beamercolorbox}
+    \addtocounter{framenumber}{-1}%
+
+}
+
+
+
+\mode<all>
