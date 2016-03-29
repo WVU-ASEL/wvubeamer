@@ -1,6 +1,65 @@
 \mode<presentation>
 \newcommand{\btVFill}{\vskip0pt plus 1filll}
 %titlepage
+
+%commands for the title page
+\newcommand{\meeting}{\@dblarg\wvubeamer@meeting}
+\long\def\wvubeamer@meeting[#1]#2{%
+    \def\insertmeeting{#2}%
+    \def\insertshortmeeting{#1}%
+}
+\meeting{Meeting goes here}
+
+\newcommand{\location}{\@dblarg\wvubeamer@location}
+\long\def\wvubeamer@location[#1]#2{%
+    \def\insertlocation{#2}%
+    \def\insertshortlocation{#1}%
+}
+\location{location goes here}
+
+\newcommand{\laboratory}{\@dblarg\wvubeamer@laboratory}
+\long\def\wvubeamer@laboratory[#1]#2{%
+    \def\insertlaboratory{#2}%
+    \def\insertshortlaboratory{#1}%
+}
+\laboratory{Applied Space Exploration Laboratory (ASEL)}
+
+\newcommand{\department}{\@dblarg\wvubeamer@department}
+\long\def\wvubeamer@department[#1]#2{%
+    \def\insertdepartment{#2}%
+    \def\insertshortdepartment{#1}%
+}
+\department{Deparment of Mechanical and Aerospace Engineering}
+
+\newcommand{\college}{\@dblarg\wvubeamer@college}
+\long\def\wvubeamer@college[#1]#2{%
+    \def\insertcollege{#2}%
+    \def\insertshortcollege{#1}%
+}
+\college{Benjamin M. Statler College of Engineering \& Mineral Resources}
+
+\newcommand{\lablogo}{\@dblarg\wvubeamer@lablogo}
+\long\def\wvubeamer@lablogo[#1]#2{%
+    \def\insertlablogo{#2}%
+}
+\lablogo{asellogo}
+
+
+\newcommand{\labweb}{\@dblarg\wvubeamer@labweb}
+\long\def\wvubeamer@labweb[#1]#2{%
+    \def\insertlabweb{#2}%
+    \def\temp{#1}%
+    \ifx\temp\empty
+        \def\insertlabhyp{#1}
+    \else
+        \def\insertlabhyp{#1}
+    \fi%
+}
+\labweb[http://asel.mae.wvu.edu]{asel.mae.wvu.edu}
+
+%default institute
+\institute{West Viriginia University (WVU)}
+
 \defbeamertemplate*{title page}{wvu}[1][]
 {
     \btVFill
@@ -16,27 +75,48 @@
         \begin{column}{0.75\textwidth}
             {%
                 {\usebeamercolor[fg]{date}\usebeamerfont{date}\insertdate\newline}%
-                {\usebeamercolor[fg]{meeting}\usebeamerfont{meeting}The Noodle Meetings \newline}%
-                {\usebeamercolor[fg]{location}\usebeamerfont{location}Philly, PA\par}
+                {\usebeamercolor[fg]{meeting}\usebeamerfont{meeting}\insertmeeting \newline}%
+                {\usebeamercolor[fg]{location}\usebeamerfont{location}\insertlocation\par}
             }%
             \medskip
             {
                 {\usebeamercolor[fg]{author}\usebeamerfont{author}\insertauthor \newline}%
-                {\usebeamercolor[fg]{laboratory}\usebeamerfont{laboratory}Applied Space Exploration Laboratory \newline}%
-                {\usebeamercolor[fg]{department}\usebeamerfont{department}Department of Mechanical and Aerospace Engineering \newline}%
-                {\usebeamercolor[fg]{college}\usebeamerfont{college}Benjamin M. Statler College of Engineering \& Mineral Resources \newline}%
-                {\usebeamercolor[fg]{institute}\usebeamerfont{institute}West Virginia University (WVU) \newline}%
-                {\usebeamercolor[fg]{institute web}\usebeamerfont{institute web}{\hypersetup{colorlinks=false}\href{http://asel.mae.wvu.edu}{asel.mae.wvu.edu}}\par}%
+                {\usebeamercolor[fg]{laboratory}\usebeamerfont{laboratory}\insertlaboratory \newline}%
+                {\usebeamercolor[fg]{department}\usebeamerfont{department}\insertdepartment \newline}%
+                {\usebeamercolor[fg]{college}\usebeamerfont{college}\insertcollege \newline}%
+                {\usebeamercolor[fg]{institute}\usebeamerfont{institute}\insertinstitute \newline}%
+                {\usebeamercolor[fg]{laboratory web}\usebeamerfont{laboratory web}{\hypersetup{colorlinks=false}\href{\insertlabhyp}{\insertlabweb}}\par}%
             }
         \end{column}
         \begin{column}{0.25\textwidth}
             \centering
-            \includegraphics[width=\columnwidth]{asellogo}
+            \includegraphics[width=\columnwidth]{\insertlablogo}
         \end{column}
     \end{columns}
     \addtocounter{framenumber}{-1}%
 }
 
+%Table of contents stuff
+\newcommand{\sbt}{\,\begin{picture}(-1,1)(-1,-3)\circle*{3}\end{picture}\ }
+
+\defbeamertemplate{section in toc}{wvu}{
+    \leavevmode\usebeamercolor[fg]{section in toc}\usebeamerfont{section in toc}\sbt\enskip\inserttocsection\par
+}
+\defbeamertemplate{subsection in toc}{wvu}{
+    \leavevmode\quad\usebeamercolor[fg]{subsection in toc}\usebeamerfont{subsection in toc}\sbt\enskip\inserttocsubsection\par
+}
+\defbeamertemplate{subsubsection in toc}{wvu}{
+    \leavevmode\qquad\usebeamercolor[fg]{subsubsection in toc}\usebeamerfont{subsubsection in toc}\sbt\enskip\inserttocsubsubsection\par
+}
+
+\defbeamertemplate{section in toc shaded}{wvu}{
+    \leavevmode\usebeamercolor[fg]{section in toc shaded}\usebeamerfont{section in toc shaded}\sbt\enskip\inserttocsection\par
+}
+\defbeamertemplate{subsection in toc shaded}{wvu}{
+    \leavevmode\quad\usebeamercolor[fg]{subsection in toc shaded}\usebeamerfont{subsection in toc shaded}\sbt\enskip\inserttocsubsection\par
+}
+\defbeamertemplate{subsubsection in toc shaded}{wvu}{
+    \leavevmode\qquad\usebeamercolor[fg]{subsubsection in toc shaded}\usebeamerfont{subsubsection in toc shaded}\sbt\enskip\inserttocsubsubsection\par
+}
 
 
-\mode<all>

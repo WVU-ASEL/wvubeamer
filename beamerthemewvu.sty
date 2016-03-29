@@ -4,10 +4,13 @@
 \RequirePackage{tikz}
 \usetikzlibrary{calc}
 \RequirePackage{xcolor}
+\RequirePackage{colortbl}
 \RequirePackage{graphicx}
 \RequirePackage{epstopdf}
 \RequirePackage{lmodern}
 \RequirePackage{hyperref}
+\RequirePackage{etoolbox}
+\RequirePackage{bm}
 
 \graphicspath{{./logos/}}
 
@@ -25,5 +28,46 @@
 %\setbeamertemplate{footline}{}
 
 \setbeamersize{text margin left=15pt,text margin right=15pt} 
+
+% have the table of contents display at each section
+\newcommand{\toctitle}{Agenda}
+%\newcommand{\btVFill}{\vskip0pt plus 1filll}
+\AtBeginSection[]
+{
+\begin{frame}<beamer>[t]
+    \setbeamerfont{section in toc}{parent=toc,series=\bfseries}
+    \setbeamerfont{subsection in toc}{parent=toc,series=\bfseries}
+    \setbeamerfont{subsubsection in toc}{parent=toc,series=\bfseries}
+    \frametitle{{\bfseries\toctitle}}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+
+%set up the table of contents to use bullets
+\setbeamertemplate{section in toc}[wvu]
+\setbeamertemplate{subsection in toc}[wvu]
+\setbeamertemplate{subsubsection in toc}[wvu]
+
+\setbeamertemplate{section in toc shaded}[wvu]
+\setbeamertemplate{subsection in toc shaded}[wvu]
+\setbeamertemplate{subsubsection in toc shaded}[wvu]
+
+
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip\itemsep}
+  {}
+  {}
+\patchcmd{\beamer@subsectionintoc}
+  {\vfill}
+  {\vskip\itemsep}
+  {}
+  {}
+\patchcmd{\beamer@subsubsectionintoc}
+  {\vfill}
+  {\vskip\itemsep}
+  {}
+  {}
+
 
 \mode<all>

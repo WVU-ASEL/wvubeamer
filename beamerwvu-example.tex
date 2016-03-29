@@ -1,11 +1,19 @@
-\documentclass{beamer}
+\documentclass[xcolor=table]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\title{This is an Example Presentation With a Relatively Long Title}
-\date{\today}
-\author{Andrew J. Liounis}
 
 \usetheme{wvu}
+
+\title{This is an Example Presentation with a Relatively Long Title}
+\date{\today}
+\author{Andrew J. Liounis}
+\meeting{The International Awesome Conference}
+\location{Boise, Idaho}
+\department{Department of Mechanical and Aerospace Engineering}
+\college{Benjamin M. Statler College of Engineering \& Mineral Resources}
+\laboratory{Applied Space Exploration Laboratory (ASEL)}
+\lablogo{asellogo}
+\labweb[http://asel.mae.wvu.edu]{asel.mae.wvu.edu}
 
 \begin{document}
 
@@ -13,12 +21,59 @@
     \titlepage
 \end{frame}
 
+\begin{frame}[t]
+    \frametitle{{\bfseries\toctitle}}
+    \tableofcontents
+\end{frame}
+
+\section{I am trying out sections now}
+
 \begin{frame}{This is the frame title}
     Lemon lollipops for breakfast.
 \end{frame}
 
+\subsection{along with subsections}
 \begin{frame}[plain]
     hello world
 \end{frame}
+
+\section{this is another section}
+\subsection{whoa a whole bunch of stuff}
+\subsubsection{just happened}
+
+\begin{frame}{I want to eat \textbf{apples} and \textbf{bananas}}
+    \begin{columns}
+        \centering
+        \begin{column}[t]{0.47\textwidth}
+            \centering
+            \textbf{Pros}
+
+            They are both pretty tasty.
+        \end{column}
+        \begin{column}[t]{0.47\textwidth}
+            \centering
+            \textbf{Cons}
+
+            There aren't any cons about apples and bananas.
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Tables are fun}
+    \begin{center}
+        \begin{tabular}{l|ccc}
+            \hline
+            \hline
+            & lemon & mustard & horseradish \\
+            \hline
+            taco & yes & no & \textbf{no} \\
+            burger & no & yes & no \\
+            fish & maybe & probably not & no \\
+            \hline
+            \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+
 
 \end{document}

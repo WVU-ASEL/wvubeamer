@@ -26,13 +26,15 @@
 \definecolor{wvuaccentred}{RGB}{190,58,52}
 \definecolor{wvuaccentyello}{RGB}{253,218,36}
 
+\setbeamercolor{titlelike}{fg=black}
+
 %standard colors
 \setbeamercolor{normal text}{fg=black}
 \setbeamercolor{web link}{fg=wvublue}
 %\setbeamercolor{alerted text}{fg=wvublack,bg=white}
 
 %title and question page colors
-\setbeamercolor{title}{parent=normal text}
+\setbeamercolor{title}{parent=titlelike}
 \setbeamercolor{date}{parent=normal text}
 \setbeamercolor{meeting}{parent=normal text}
 \setbeamercolor{location}{parent=normal text}
@@ -41,10 +43,30 @@
 \setbeamercolor{department}{parent=normal text}
 \setbeamercolor{college}{parent=normal text}
 \setbeamercolor{institute}{parent=normal text}
-\setbeamercolor{institute web}{parent=web link}
+\setbeamercolor{laboratory web}{parent=web link}
 
 %header colore
 \setbeamercolor{statler web}{fg=white}
 
+%primary and palette
+\setbeamercolor{palette primary}{fg=wvublue}
+\setbeamercolor{palette secondary}{fg=wvuaccentblue1}
+\setbeamercolor{palette tertiary}{fg=wvuaccentblue2}
+\setbeamercolor{palette quaternary}{fg=wvublack}
 
+%colors for normal slides
+\setbeamercolor{alerted text}{fg=wvuaccentred}
+\setbeamercolor{example text}{fg=wvuaccentblue1}
 
+%colors for table of contents
+\setbeamercolor{toc}{fg=black}
+\setbeamercolor{section in toc}{parent=toc}
+\setbeamercolor{subsection in toc}{parent=toc}
+\setbeamercolor{subsubsection in toc}{parent=toc}
+
+\setbeamercolor{shaded toc}{fg=wvucoolgray2}
+\setbeamercolor{section in toc shaded}{parent=shaded toc}
+\setbeamercolor{subsection in toc shaded}{parent=shaded toc}
+\setbeamercolor{subsubsection in toc shaded}{parent=shaded toc}
+
+\mode<all>
