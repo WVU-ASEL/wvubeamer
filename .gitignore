@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+beamerwvu-example.pdf
+*.synctex.gz
+*.snm
+*.synctex
+*.toc
+*.vrb
+

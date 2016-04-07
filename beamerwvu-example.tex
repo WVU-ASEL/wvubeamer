@@ -1,6 +1,12 @@
 \documentclass[xcolor=table]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{positioning, decorations.pathreplacing}
+
+\usepackage{verbatim}
+
 
 \usetheme{wvu}
 
@@ -61,18 +67,70 @@
 
 \begin{frame}{Tables are fun}
     \begin{center}
-        \begin{tabular}{l|ccc}
+        \setlength\arrayrulewidth{2pt}\arrayrulecolor{white}\renewcommand{\arraystretch}{1.5}
+        \setlength\doublerulesep{0pt}
+        \begin{tabular}{>{\columncolor{wvucoolgray2}}l||>{\columncolor{wvuaccentblue2!50}}c|>{\columncolor{wvuaccentred!50}}c|>{\columncolor{wvuaccentblue2!50}}c}
+            \rowcolor{wvucoolgray2} & lemon & mustard & horseradish \\
+            \hline\hline
+            taco & yes & no & \cellcolor{wvugold}\textbf{no} \\
             \hline
-            \hline
-            & lemon & mustard & horseradish \\
-            \hline
-            taco & yes & no & \textbf{no} \\
             burger & no & yes & no \\
+            \hline
             fish & maybe & probably not & no \\
-            \hline
-            \hline
         \end{tabular}
+
     \end{center}
+
+    \alert{\bfseries This is a very very bad table.  It is included to demonstrate how to use the colors and other things like that.}
+\end{frame}
+
+\newcommand{\tikzcolbox}[2]{\node[fill=wvu#1,colbox] (wvu#1) #2 {#1};} 
+
+\begin{frame}[fragile]{There are a lot of defined colors to go with the ``color scheme'' in the color style file.}
+
+    \begin{center}
+    \begin{tikzpicture}
+        [colbox/.style={rectangle, minimum height=7.5mm, minimum width=15mm, inner sep=1pt, font=\tiny, align=center},
+        newbrace/.style={decorate, decoration={brace,amplitude=5pt}, ultra thick},
+        bracenode/.style={midway, xshift=-10pt, anchor=east, inner sep=2pt, font=\bfseries}]
+
+        \tikzcolbox{gold}{}
+        \tikzcolbox{blue}{at (wvugold.east) [anchor=west, text=white]}
+        \tikzcolbox{black}{[below= 1mm of wvugold, text=white]}
+        \tikzcolbox{coolgray1}{at (wvublack.east) [anchor=west, text=white]}
+        \tikzcolbox{coolgray2}{at (wvucoolgray1.east) [anchor=west]}
+        \tikzcolbox{warmgray1}{at (wvucoolgray2.east) [anchor=west]}
+        \tikzcolbox{warmgray2}{at (wvuwarmgray1.east) [anchor=west]}
+        \tikzcolbox{warmgray3}{at (wvuwarmgray2.east) [anchor=west]}
+ 
+        \tikzcolbox{accentblue1}{[below= 1mm of wvublack, text=white]}
+        \tikzcolbox{accentblue2}{at (wvuaccentblue1.east) [anchor=west]}
+        \tikzcolbox{accentblue3}{at (wvuaccentblue2.east) [anchor=west]}
+        \tikzcolbox{accentgreen1}{at (wvuaccentblue3.east) [text=white, anchor=west]}
+        \tikzcolbox{accentgreen2}{at (wvuaccentgreen1.east) [anchor=west]}
+        \tikzcolbox{accentgreen3}{at (wvuaccentgreen2.east) [anchor=west]}
+
+        \tikzcolbox{accentbrown1}{at (wvuaccentblue1.south) [anchor=north, text=white]}
+        \tikzcolbox{accentbrown2}{at (wvuaccentbrown1.east) [anchor=west]}
+        \tikzcolbox{accentorange1}{at (wvuaccentbrown2.east) [anchor=west]}
+        \tikzcolbox{accentorange2}{at (wvuaccentorange1.east) [anchor=west]}
+        \tikzcolbox{accentred}{at (wvuaccentorange2.east) [anchor=west]}
+        \tikzcolbox{accentyellow}{at (wvuaccentred.east) [anchor=west]}
+
+       
+        \draw[newbrace, draw=wvublue] (wvugold.south west) -- (wvugold.north west) node[bracenode, text=wvublue] {Primary};
+        \draw[newbrace, draw=wvuwarmgray1] (wvublack.south west) -- (wvublack.north west) node[bracenode, text=wvuwarmgray1] {Neutral};
+        \draw[newbrace, draw=wvuaccentorange1] (wvuaccentbrown1.south west) -- (wvuaccentblue1.north west) node[bracenode, text=wvuaccentorange1] {Accent};
+      
+    \end{tikzpicture}
+\end{center}
+
+    Just append ``wvu'' to the names in the boxes.  For instance: \verb|\textcolor{wvuaccentorange1}{\bfseries Hello World!}| results in \textcolor{wvuaccentorange1}{\bfseries Hello World!}
+
+\end{frame}
+
+\begin{frame}
+    \Large\bfseries Finally, learn tikz! it will make your life much easier!
 \end{frame}
 
 
